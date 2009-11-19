@@ -1,0 +1,12 @@
+#! /bin/sh
+
+rsync -a $1 $2
+
+#-------------------
+# if you don't have rsync...
+#-------------------
+#cd $1
+#tar -jcf install.tar.bz2 *
+#cd $2
+#tar -jxf ${1}/install.tar.bz2
+#rm ${1}/install.tar.bz2

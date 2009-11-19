@@ -1,0 +1,10 @@
+#!/bin/sh
+machine=`cat /proc/cpuinfo | grep "^machine" | cut -d ":" -f 2-`
+ostype=`sysctl -n kernel.ostype`
+osrelease=`sysctl -n kernel.osrelease`
+linux="$ostype $osrelease"
+busybox=`busybox | head -n 1 | cut -d " " -f 1-2`
+version=`cat /etc/version`
+echo ------------------------------------
+echo $machine tiny $version "($linux, $busybox)"
+echo ------------------------------------

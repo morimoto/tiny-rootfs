@@ -1,0 +1,39 @@
+#! /bin/sh
+
+# export initial environment variables
+export HOME=/root
+export PATH=/bin:/sbin:/usr/bin:/usr/sbin
+
+# mount
+/bin/mount -a
+
+# setup mdev as hotplug handler
+if [ -f /proc/sys/kernel/hotplug ]; then
+  echo /sbin/mdev > /proc/sys/kernel/hotplug
+else
+  /sbin/sysctl -w kernel.hotplug=/sbin/mdev
+fi
+
+# udev replacement
+/sbin/mdev -s
+
+# create /etc/hostcat.conf which contains ip address to our bootserver
+dmesg | grep bootserver= | cut -c 17- | cut -d "," -f 1 > /etc/hostcat.conf
+
+# setup local network interface
+/sbin/ifconfig lo 127.0.0.1 netmask 255.0.0.0
+if [ -f /etc/ipaddr ]; then
+    /sbin/ifconfig eth0 \`cat /etc/ipaddr\` netmask 255.255.255.0 &
+fi
+
+# setup hostname if have
+if [ -f /etc/hostname ]; then
+    /bin/hostname -F /etc/hostname
+fi
+
+# run rcS.d list
+LIST=`ls /etc/rcS.d/S*`
+for l in ${LIST}
+do
+    ${l}
+done

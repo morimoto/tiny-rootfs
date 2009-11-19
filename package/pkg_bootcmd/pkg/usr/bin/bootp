@@ -1,0 +1,52 @@
+#!/bin/sh
+# bootp - try to behave as u-boot bootp command
+
+detect_net () {
+  if [ -d /sys/class/net ]; then
+    ls /sys/class/net
+  else
+    echo eth0
+  fi | while read line;
+  do
+    if [ $line != "lo" ]; then
+      echo "$line";
+    fi
+  done | head -n 1
+}
+
+iface=$1
+
+if [ -z "$iface" ]; then
+  iface=`detect_net`
+fi
+
+if [ -z "$iface" ]; then
+  echo "no network interface" >&2
+  exit 1
+fi
+
+udhcpc -i $iface -t 10
+ret=$?
+
+if [ $ret -ne 0 ]; then
+  exit 1;
+fi
+
+cat_file () {
+ interface=$1
+ cat /var/run/udhcpc/$interface 2>/dev/null
+}
+
+file=`cat_file $iface | grep "^boot_file:" | cut -d ":" -f 2-`
+server=`cat_file $iface | grep "^serverid:" | cut -d ":" -f 2-`
+
+if [ -n "$server" -a -n "$file" ]; then
+  echo -n Loading boot file "$file" from "$server"..
+  tftp -g -l /tmp/bootp.file -r "$file" "$server"
+  echo " done."
+fi
+
+# create /etc/hostcat.conf which contains ip address to our bootserver
+if [ -n "$server" ]; then
+  echo "$server" > /etc/hostcat.conf
+fi

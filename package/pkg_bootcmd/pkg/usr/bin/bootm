@@ -1,0 +1,19 @@
+#!/bin/sh
+# bootm - try to behave as u-boot bootm command
+
+file=/tmp/bootp.file
+
+if [ ! -f "$file" ]; then
+  echo "cannot find bootp file, please run bootp first" >&2
+  exit 1
+fi
+
+kexec -l $file
+ret=$?
+
+if [ $ret -ne 0 ]; then
+  exit 1
+fi
+
+kexec -e
+

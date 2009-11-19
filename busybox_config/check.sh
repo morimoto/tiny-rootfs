@@ -1,0 +1,3 @@
+#! /bin/sh
+grep CONFIG_CROSS_COMPILER_PREFIX *
+grep CONFIG_PREFIX *

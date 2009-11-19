@@ -1,0 +1,15 @@
+#!/bin/sh
+#
+# hostcat - cat a file on the host using tftp
+
+if [ $# -lt 1 ]; then
+  echo "usage: hostcat hostfile" >&2
+  exit 1
+fi
+
+if [ ! -f "/etc/hostcat.conf" ]; then
+  echo "missing configuration" >&2
+  exit 1
+fi
+
+tftp -g -l - -r "$1" `cat /etc/hostcat.conf`

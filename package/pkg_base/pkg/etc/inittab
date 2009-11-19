@@ -1,0 +1,5 @@
+::sysinit:/etc/rc.sysinit
+::respawn:-/bin/sh
+#::respawn:/sbin/getty -L 115200 ttySC0 vt100
+::shutdown:/sbin/halt
+::ctrlaltdel:/sbin/reboot
