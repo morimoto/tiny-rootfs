@@ -1,0 +1,63 @@
+============== -*- outline -*- ==============
+
+                 tiny-rootfs
+2009/09  morimoto
+=============================================
+
+* What is tiny-rootfs
+
+	Very tiny root file system which have necessary/minimum function
+
+* compile / install
+
+	If you want use cross-compiler, add 'HOST' variable on make
+	ex)
+	make HOST=sh4-linux
+
+	You can use ".config" file instead of using "troublesome make option".
+	"sample.config" is sample for it.
+
+	You can install tiny rootfs by
+
+	make install
+
+	in this case, "initramfs" is the target folder
+
+	You can use it on Linux kernel by
+	CONFIG_INITRAMFS_SOURCE="${PATH}/initramfs"
+
+**  Caution 1
+
+	The environment which can use net is needed,
+	because tiny-rootfs get necessary tools (busybox, kexec) from net
+
+**  Caution 2
+
+	tiny-rootfs ask you root password in last of "make install".
+	It is needed to use "mknod" command
+
+* I need bootp/bootm command
+
+	make bootcmd_install
+
+* How to execute my script when boot
+
+	Put your script on ${INITRAMFS}/etc/rcS.d after "make install"
+	The file of the name called Sxxx will be executed.
+
+* I would like to change installation folder
+
+	make O=xxx
+	make O=xxx install
+
+* How to add fixed IP address
+
+	Add fixed IP address on "/etc/ipaddr"
+
+* Sample
+
+	# use sh4-linux cross compiler
+	make HOST=sh4-linux install
+
+	# use x86
+	make install
