@@ -38,7 +38,7 @@
 
 * bootp/bootm を使いたい
 
-	make bootd_install
+	make bootcmd_install
 
 * 自動で USB から起動したい
 
