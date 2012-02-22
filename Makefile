@@ -30,19 +30,6 @@ endif
 
 all: ${BUSYBOX}/busybox
 
-${BUSYBOX}.tar.bz2:
-	wget http://www.busybox.net/downloads/${BUSYBOX}.tar.bz2
-
-${BUSYBOX}/.config: ${BUSYBOX}.tar.bz2
-	tar -jxf ${BUSYBOX}.tar.bz2
-	cp ./busybox_config/${BUSYBOX}.config			$@
-	echo "CONFIG_CROSS_COMPILER_PREFIX=\"${CROSS}\""	>> $@
-	echo "CONFIG_PREFIX=\"${INSDIR}\""			>> $@
-	cd ${BUSYBOX}; make oldconfig
-
-${BUSYBOX}/busybox: ${BUSYBOX}/.config
-	cd ${BUSYBOX}; make O=
-
 ${KEXEC}.tar.bz2:
 	wget http://www.kernel.org/pub/linux/kernel/people/horms/kexec-tools/${KEXEC}.tar.bz2
 
