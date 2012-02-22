@@ -29,6 +29,7 @@ CROSS := ${HOST}-
 endif
 
 all: ${BUSYBOX}/busybox
+install: busybox_install
 
 ${KEXEC}.tar.bz2:
 	wget http://www.kernel.org/pub/linux/kernel/people/horms/kexec-tools/${KEXEC}.tar.bz2

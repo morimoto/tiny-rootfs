@@ -11,9 +11,11 @@ ${BUSYBOX}/.config: ${BUSYBOX}.tar.bz2
 ${BUSYBOX}/busybox: ${BUSYBOX}/.config
 	cd ${BUSYBOX}; make O=
 
-install: ${BUSYBOX}/busybox
+${INSDIR} ${INSDIR}/sbin:
 	mkdir -p ${INSDIR}
 	cd ${INSDIR}; mkdir -p proc mnt home home/user root var var/log tmp etc dev sys lib
+
+busybox_install: ${INSDIR} ${BUSYBOX}/busybox
 	${TOP}/package/pinstall ${TOP}/package/pkg_busybox/pkg/ ${INSDIR}/
 	cd ${BUSYBOX}; make O= CONFIG_PREFIX=${INSDIR} install
 	echo ${VERSION} > ${INSDIR}/etc/version
