@@ -36,9 +36,10 @@
 	tiny-rootfs ask you root password in last of "make install".
 	It is needed to use "mknod" command
 
-* I need bootp/bootm command
+* special commands
 
 	make bootcmd_install
+	make kexec_install
 
 * How to execute my script when boot
 

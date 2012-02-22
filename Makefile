@@ -31,16 +31,6 @@ endif
 all: ${BUSYBOX}/busybox
 install: busybox_install
 
-${KEXEC}.tar.bz2:
-	wget http://www.kernel.org/pub/linux/kernel/people/horms/kexec-tools/${KEXEC}.tar.bz2
-
-${KEXEC}/Makefile: ${KEXEC}.tar.bz2
-	tar -jxf ${KEXEC}.tar.bz2
-	cd ${KEXEC}; LDFLAGS=-static ./configure --host=${HOST}
-
-${KEXEC}/build/sbin/kexec: ${KEXEC}/Makefile
-	cd ${KEXEC}; make
-
 include ./package/*/Makefile
 
 clean:
