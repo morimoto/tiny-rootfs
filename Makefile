@@ -15,7 +15,7 @@ TOP	= `pwd`
 # make O=${PATH}
 #
 ifneq ($(O),)
-INSDIR := $(shell cd ${O} && /bin/pwd)
+INSDIR := $(shell mkdir -p ${O} && cd ${O} && /bin/pwd)
 $(if $(INSDIR),, \
      $(error output directory "$(O)" does not exist))
 endif

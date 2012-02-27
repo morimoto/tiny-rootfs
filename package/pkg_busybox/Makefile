@@ -11,11 +11,19 @@ ${BUSYBOX}/.config: ${BUSYBOX}.tar.bz2
 ${BUSYBOX}/busybox: ${BUSYBOX}/.config
 	cd ${BUSYBOX}; make O=
 
-${INSDIR} ${INSDIR}/sbin:
-	mkdir -p ${INSDIR}
-	cd ${INSDIR}; mkdir -p proc mnt home home/user root var var/log tmp etc dev sys lib
+insdirs ${INSDIR}/sbin ${INSDIR}/etc:
+	mkdir -p ${INSDIR}/proc
+	mkdir -p ${INSDIR}/mnt
+	mkdir -p ${INSDIR}/home/user
+	mkdir -p ${INSDIR}/root
+	mkdir -p ${INSDIR}/var/log
+	mkdir -p ${INSDIR}/tmp
+	mkdir -p ${INSDIR}/etc
+	mkdir -p ${INSDIR}/dev
+	mkdir -p ${INSDIR}/sys
+	mkdir -p ${INSDIR}/lib
 
-busybox_install: ${INSDIR} ${BUSYBOX}/busybox
+busybox_install: insdirs ${BUSYBOX}/busybox
 	${TOP}/package/pinstall ${TOP}/package/pkg_busybox/pkg/ ${INSDIR}/
 	cd ${BUSYBOX}; make O= CONFIG_PREFIX=${INSDIR} install
 	echo ${VERSION} > ${INSDIR}/etc/version
