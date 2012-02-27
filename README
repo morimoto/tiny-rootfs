@@ -40,6 +40,7 @@
 
 	make bootcmd_install
 	make kexec_install
+	make hostcp_install
 
 * How to execute my script when boot
 

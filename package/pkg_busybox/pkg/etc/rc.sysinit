@@ -17,9 +17,6 @@ fi
 # udev replacement
 /sbin/mdev -s
 
-# create /etc/hostcat.conf which contains ip address to our bootserver
-dmesg | grep bootserver= | cut -c 17- | cut -d "," -f 1 > /etc/hostcat.conf
-
 # setup local network interface
 /sbin/ifconfig lo 127.0.0.1 netmask 255.0.0.0
 if [ -f /etc/ipaddr ]; then

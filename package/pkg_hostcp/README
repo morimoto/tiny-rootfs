@@ -1,0 +1,30 @@
+============== -*- outline -*- ==============
+
+                 hostcp
+
+2012/02  morimoto
+=============================================
+
+* What is hostcp ?
+
+	You can copy program/file from your TFTP server by using hostcp.
+	The original hostcp was hostcat which was created by Magnus Damm.
+
+* How to use it ?
+
+	hostcp require /etc/hostcp.config which has TFTP server IP
+
+	/ # cat /etc/hostcp.conf
+	192.168.10.77
+
+	If your kernel has "CONFIG_IP_PNP_DHCP",
+	/etc/hostcp.conf will be set automatically.
+	if not, set it your self.
+
+	Of course TFTP server/platform network are required :)
+
+	Then, you can run
+
+	/ # hostcp foo /home
+
+	Now file "foo" will be copied to your platform/home from TFTP-server.

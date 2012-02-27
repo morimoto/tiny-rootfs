@@ -1,0 +1,15 @@
+#!/bin/sh
+#
+# hostcp - cat a file on the host using tftp
+
+if [ $# -lt 1 ]; then
+  echo "usage: hostcp hostfile dir" >&2
+  exit 1
+fi
+
+if [ ! -f "/etc/hostcp.conf" ]; then
+  echo "missing configuration /etc/hostcp.conf" >&2
+  exit 1
+fi
+
+tftp -g -l - -r "$1" `cat /etc/hostcp.conf` > "$2"/`basename $1`
