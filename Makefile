@@ -1,4 +1,4 @@
-VERSION	= 0.0.1
+VERSION	= 0.0.2
 KEXEC	= kexec-tools-2.0.1
 BUSYBOX	= busybox-1.20.2
 HOST	=
