@@ -4,9 +4,9 @@ BUSYBOX	= busybox-1.20.2
 HOST	=
 CROSS	=
 O	=
-INSDIR	= $(shell pwd)/initramfs
+TOP	= ${PWD}
+INSDIR	= ${TOP}/initramfs
 PACKAGE = `ls -d ./package/pkg_*`
-TOP	= `pwd`
 
 -include .config
 
