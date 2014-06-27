@@ -1,6 +1,6 @@
 VERSION	= 0.0.3
 KEXEC	= kexec-tools-2.0.1
-BUSYBOX	= busybox-1.20.2
+BUSYBOX	= busybox-1.22.0
 HOST	=
 CROSS	=
 O	=
