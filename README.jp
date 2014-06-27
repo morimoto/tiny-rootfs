@@ -36,6 +36,10 @@
 	make install をすると最後に root のパスワードを聞かれます
 	これは mknod コマンドを使う必要があるためで，sudo mknod を使用するから
 
+* ALSA (aplay/arecord/amixer) を使いたい
+
+	make alsa_install
+
 * bootp/bootm を使いたい
 
 	make bootcmd_install
