@@ -19,25 +19,25 @@ ${ALSA-DIR}/usr/bin/aplay ${ALSA-DIR}/usr/bin/arecord ${ALSA-DIR}/usr/bin/amixer
 	rm -fr ${TOP}/${ALSA-DIR}/usr/share/locale;\
 	rm -fr ${TOP}/${ALSA-DIR}/usr/share/man;
 
-${ALSA-LIB}: ${ALSA-LIB}.tar.bz2
+${ALSA-LIB}/configure: ${ALSA-LIB}.tar.bz2
 	tar -jxf ${ALSA-LIB}.tar.bz2
 
-${ALSA-UTIL}: ${ALSA-UTIL}.tar.bz2
+${ALSA-UTIL}/configure: ${ALSA-UTIL}.tar.bz2
 	tar -jxf ${ALSA-UTIL}.tar.bz2
 
 # use statically link
-${ALSA-LIB}/Makefile: ${ALSA-LIB} ${ALSA-DIR}
+${ALSA-LIB}/Makefile: ${ALSA-LIB}/configure
 	cd ${ALSA-LIB};\
 	./configure --host=${HOST} --enable-shared=no --enable-static=yes
 
-${ALSA-UTIL}/Makefile: ${ALSA-UTIL} ${ALSA-DIR}/usr/lib  ${ALSA-DIR}/usr/include
+${ALSA-UTIL}/Makefile: ${ALSA-UTIL}/configure
 	cd ${ALSA-UTIL};\
 	./configure	--host=${HOST} --with-alsa-prefix=${TOP}/${ALSA-DIR}/usr/lib \
 			--with-alsa-inc-prefix=${TOP}/${ALSA-DIR}/usr/include --disable-alsamixer \
 			--disable-xmlto --without-udev-rules-dir --disable-nls \
 			LDFLAGS="-static"
 
-alsa_install: ${ALSA-DIR}/usr/bin/aplay ${ALSA-DIR}/usr/bin/arecord ${ALSA-DIR}/usr/bin/amixer
+alsa_install: ${ALSA-DIR} ${ALSA-DIR}/usr/bin/aplay ${ALSA-DIR}/usr/bin/arecord ${ALSA-DIR}/usr/bin/amixer
 	${TOP}/package/pinstall ${ALSA-DIR}/usr/share		${INSDIR}/usr;\
 	${TOP}/package/pinstall ${ALSA-DIR}/usr/bin/aplay	${INSDIR}/usr/bin/;\
 	${TOP}/package/pinstall ${ALSA-DIR}/usr/bin/arecord	${INSDIR}/usr/bin/;\
