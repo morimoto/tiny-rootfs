@@ -1,8 +1,8 @@
 ${ALSA-LIB}.tar.bz2:
-	wget ftp://ftp.alsa-project.org/pub/lib/alsa-lib-${ALSA-VER}.tar.bz2
+	wget ftp://ftp.alsa-project.org/pub/lib/${ALSA-LIB}.tar.bz2
 
 ${ALSA-UTIL}.tar.bz2:
-	wget ftp://ftp.alsa-project.org/pub/utils/alsa-utils-${ALSA-VER}.tar.bz2
+	wget ftp://ftp.alsa-project.org/pub/utils/${ALSA-UTIL}.tar.bz2
 
 ${ALSA-DIR}:
 	mkdir ${ALSA-DIR}
