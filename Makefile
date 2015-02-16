@@ -43,6 +43,7 @@ clean:
 	rm -fr ${ALSA-LIB}
 	rm -fr ${ALSA-UTIL}
 	rm -fr ${ALSA-DIR}
+	rm -fr ${ALSA-DIR}no
 
 mrproper: clean
 	rm -fr ${BUSYBOX}.tar.bz2
