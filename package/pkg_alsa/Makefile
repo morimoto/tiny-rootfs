@@ -18,6 +18,7 @@ ${ALSA-DIR}/usr/bin/aplay ${ALSA-DIR}/usr/bin/arecord ${ALSA-DIR}/usr/bin/amixer
 	make DESTDIR=${TOP}/${ALSA-DIR} install-strip;\
 	rm -fr ${TOP}/${ALSA-DIR}/usr/share/locale;\
 	rm -fr ${TOP}/${ALSA-DIR}/usr/share/man;
+	${CROSS}strip $@
 
 ${ALSA-LIB}/configure: ${ALSA-LIB}.tar.bz2
 	tar -jxf ${ALSA-LIB}.tar.bz2
