@@ -12,7 +12,7 @@ ${ALSA-DIR}/usr/include ${ALSA-DIR}/usr/lib: ${ALSA-LIB}/Makefile
 	make;\
 	make DESTDIR=${TOP}/${ALSA-DIR} install-strip
 
-${ALSA-DIR}/usr/bin/aplay ${ALSA-DIR}/usr/bin/arecord ${ALSA-DIR}/usr/bin/amixer: ${ALSA-UTIL}/Makefile
+${ALSA-DIR}/usr/bin/aplay ${ALSA-DIR}/usr/bin/arecord ${ALSA-DIR}/usr/bin/amixer: ${ALSA-DIR}/usr/include ${ALSA-DIR}/usr/lib ${ALSA-UTIL}/Makefile
 	cd ${ALSA-UTIL};\
 	make;\
 	make DESTDIR=${TOP}/${ALSA-DIR} install-strip;\
