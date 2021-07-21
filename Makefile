@@ -1,6 +1,6 @@
 VERSION	= 0.0.3
 KEXEC	= kexec-tools-2.0.1
-BUSYBOX	= busybox-1.22.0
+BUSYBOX	= busybox-1.33.1
 ALSA-LIB= alsa-lib-1.0.27
 ALSA-UTIL= alsa-utils-1.0.27
 ALSA-DIR= alsa-dir
