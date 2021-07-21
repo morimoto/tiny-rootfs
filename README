@@ -29,7 +29,7 @@
 **  Caution 1
 
 	The environment which can use net is needed,
-	because tiny-rootfs get necessary tools (busybox, kexec) from net
+	because tiny-rootfs get necessary tools from net
 
 **  Caution 2
 
@@ -38,8 +38,6 @@
 
 * special commands
 
-	make bootcmd_install
-	make kexec_install
 	make hostcp_install
 
 * How to execute my script when boot

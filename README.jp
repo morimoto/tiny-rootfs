@@ -28,21 +28,13 @@
 
 **  注意 1
 
-	busybox や kexec 等必要なソースをネットから持ってこようとするので，
+	busybox 等必要なソースをネットから持ってこようとするので，
 	ネットに接続出来る必要がある
 
 **  注意 2
 
 	make install をすると最後に root のパスワードを聞かれます
 	これは mknod コマンドを使う必要があるためで，sudo mknod を使用するから
-
-* bootp/bootm を使いたい
-
-	make bootcmd_install
-
-* 自動で USB から起動したい
-
-	make autoreboot_install
 
 * 自前のスクリプトを実行させたい
 
@@ -57,14 +49,3 @@
 * 固定 IP アドレスを与えるには
 
 	/etc/ipaddr に固定 IP が書いてあるとそれを自動で使用します
-
-* サンプル
-
-	# sh4-linux を使う場合
-	make HOST=sh4-linux  autoreboot_install
-
-	# sh4-unknown-linux-gnu を使う場合
-	make HOST=sh4-unknown-linux-gnu autoreboot_install
-
-	# x86 用
-	make bootd_install

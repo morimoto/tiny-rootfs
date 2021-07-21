@@ -1,5 +1,4 @@
 VERSION	= 0.0.3
-KEXEC	= kexec-tools-2.0.1
 BUSYBOX	= busybox-1.33.1
 HOST	=
 CROSS	=
@@ -36,8 +35,6 @@ include ./package/*/Makefile
 clean:
 	sudo rm -fr ${INSDIR}
 	rm -fr ${BUSYBOX}
-	rm -fr ${KEXEC}
 
 mrproper: clean
 	rm -fr ${BUSYBOX}.tar.bz2
-	rm -fr ${KEXEC}.tar.bz2
