@@ -41,7 +41,6 @@
 	make bootcmd_install
 	make kexec_install
 	make hostcp_install
-	make alsa_install
 
 * How to execute my script when boot
 
