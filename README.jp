@@ -36,6 +36,12 @@
 	make install をすると最後に root のパスワードを聞かれます
 	これは mknod コマンドを使う必要があるためで，sudo mknod を使用するから
 
+* package install
+
+	hostcp を使えるようにする
+
+		make hostcp_install
+
 * 自前のスクリプトを実行させたい
 
 	インストール後に ${INITRAMFS}/etc/rcS.d に実行したいスクリプトを置く
