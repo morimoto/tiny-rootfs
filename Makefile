@@ -1,10 +1,11 @@
 VERSION	= 0.0.4
-BUSYBOX	= busybox-1.33.1
+BUSYVER	= 1.33.2
+BUSYBOX	= busybox-${BUSYVER}
 HOST	=
 CROSS	=
 O	=
 TOP	= ${PWD}
-INSDIR	= ${TOP}/initramfs
+INSDIR	= ${TOP}/rootfs-${BUSYVER}
 PACKAGE = `ls -d ./package/pkg_*`
 
 -include .config
