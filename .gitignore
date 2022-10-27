@@ -1,3 +1,5 @@
-busybox-*
-.config
-initramfs
+/busybox-*
+/.config
+/alsa-lib-*
+/alsa-utils-*
+/rootfs-*
