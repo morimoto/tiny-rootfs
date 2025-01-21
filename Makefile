@@ -5,7 +5,7 @@ HOST	=
 CROSS	=
 O	=
 TOP	= ${PWD}
-INSDIR	= ${TOP}/rootfs-${BUSYVER}
+INSDIR	= ${TOP}/tiny-rootfs-${VERSION}
 PACKAGE = `ls -d ./package/pkg_*`
 
 -include .config
