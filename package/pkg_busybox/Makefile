@@ -3,7 +3,7 @@ ${BUSYBOX}.tar.bz2:
 
 ${BUSYBOX}/.config: ${BUSYBOX}.tar.bz2
 	tar -jxf ${BUSYBOX}.tar.bz2
-	cp ./package/pkg_busybox/configs/${BUSYBOX}.config	$@
+	cp ./package/pkg_busybox/configs/config			$@
 	echo "CONFIG_CROSS_COMPILER_PREFIX=\"${CROSS}\""	>> $@
 	echo "CONFIG_PREFIX=\"${INSDIR}\""			>> $@
 	cd ${BUSYBOX}; make oldconfig
