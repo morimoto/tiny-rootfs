@@ -26,19 +26,16 @@
 	全部作り終わったらこれを Linux カーネルに食わす
 	CONFIG_INITRAMFS_SOURCE="${PATH}/initramfs"
 
-**  注意 1
-
-	busybox 等必要なソースをネットから持ってこようとするので，
-	ネットに接続出来る必要がある
-
-**  注意 2
+**  注意
 
 	make install をすると最後に root のパスワードを聞かれます
 	これは mknod コマンドを使う必要があるためで，sudo mknod を使用するから
 
 * package install
 
-	hostcp を使えるようにする
+**	hostcp
+
+	詳細については package/pkg_hostcp/README を参照
 
 		make hostcp_install
 

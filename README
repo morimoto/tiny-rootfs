@@ -26,19 +26,21 @@
 	You can use it on Linux kernel by
 	CONFIG_INITRAMFS_SOURCE="${PATH}/initramfs"
 
-**  Caution 1
-
 	The environment which can use net is needed,
 	because tiny-rootfs get necessary tools from net
 
-**  Caution 2
+**  Note
 
 	tiny-rootfs ask you root password in last of "make install".
 	It is needed to use "mknod" command
 
-* special commands
+* package install
 
-	make hostcp_install
+**	hostcp
+
+	see package/pkg_hostcp/README for more detail
+
+		make hostcp_install
 
 * How to execute my script when boot
 
@@ -53,11 +55,3 @@
 * How to add fixed IP address
 
 	Add fixed IP address on "/etc/ipaddr"
-
-* Sample
-
-	# use sh4-linux cross compiler
-	make HOST=sh4-linux install
-
-	# use x86
-	make install
