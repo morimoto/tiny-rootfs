@@ -1,4 +1,4 @@
-VERSION	= 0.0.4
+VERSION	= 1.0.0
 BUSYVER	= 1.36.1
 BUSYBOX	= busybox-${BUSYVER}
 HOST	=
