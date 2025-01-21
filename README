@@ -55,3 +55,12 @@
 * How to add fixed IP address
 
 	Add fixed IP address on "/etc/ipaddr"
+
+* How to add missing command
+
+	- goto ${TOP}/busybox dir
+	  - run "make menuconfig"
+	  - select the command what you want to have
+	  - run "make"
+	- goto ${TOP}
+	  - run "make install"

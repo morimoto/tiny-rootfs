@@ -56,3 +56,12 @@
 * ホスト名を変えるには
 
 	/etc/hostname を変更
+
+* コマンドを追加したい
+
+	- ${TOP}/busybox ディレクトリに移動
+	  - "make menuconfig" を実行
+	  - 必要なコマンドを選択して保存
+	  - "make" を実行
+	- ${TOP} に移動
+	  - "make install" を実行
