@@ -1,19 +1,19 @@
 VERSION	= 1.0.1
-BUSYVER	= 1.36.1
-BUSYBOX	= busybox-${BUSYVER}
 HOST	=
 INSDIR	= ${PWD}/tiny-rootfs-${VERSION}
+PACKAGE	= busybox hostcp
 
 -include .config
 
-all: ${BUSYBOX}/busybox
+all:	 busybox_all
 install: busybox_install
 
 include ./package/*/Makefile
 
 clean:
-	sudo rm -fr ${INSDIR}
-	rm -fr ${BUSYBOX}
+	@echo clean install dir
+	@sudo rm -fr ${INSDIR}
+	@$(foreach pkg,$(PACKAGE),make -s ${pkg}_clean;)	# call xxx_clean
 
 mrproper: clean
-	rm -fr ${BUSYBOX}.tar.bz2
+	@$(foreach pkg,$(PACKAGE),make -s ${pkg}_mrproper;)	# call xxx_mrproper

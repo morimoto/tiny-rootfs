@@ -1,3 +1,7 @@
+BUSYBOX	= busybox-1.36.1
+
+busybox_all: ${BUSYBOX}/busybox
+
 ${BUSYBOX}/busybox: ${BUSYBOX}/.config
 	cd ${BUSYBOX}; make
 
@@ -28,3 +32,11 @@ busybox_install: ${BUSYBOX}/busybox
 	sudo rm -fr ${INSDIR}/dev/console
 	sudo mknod ${INSDIR}/dev/console c 5 1
 	cd ${INSDIR}; ln -s linuxrc init
+
+busybox_clean:
+	@echo clean busybox
+	rm -fr ${BUSYBOX}
+
+busybox_mrproper:
+	@echo clean busybox.tar.bz2
+	rm -fr busybox.*.tar.bz2
