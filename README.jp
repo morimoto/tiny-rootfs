@@ -44,11 +44,6 @@
 	インストール後に ${INITRAMFS}/etc/rcS.d に実行したいスクリプトを置く
 	Sxx で始まる物を実行する
 
-* インストール場所を変えたい
-
-	make O=xxx
-	make O=xxx install
-
 * 固定 IP アドレスを与えるには
 
 	/etc/ipaddr に固定 IP が書いてあるとそれを自動で使用します

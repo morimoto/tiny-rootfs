@@ -47,11 +47,6 @@
 	Put your script on ${INITRAMFS}/etc/rcS.d after "make install"
 	The file of the name called Sxxx will be executed.
 
-* I would like to change installation folder
-
-	make O=xxx
-	make O=xxx install
-
 * How to add fixed IP address
 
 	Add fixed IP address on "/etc/ipaddr"

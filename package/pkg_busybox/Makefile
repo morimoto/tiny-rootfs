@@ -9,7 +9,7 @@ ${BUSYBOX}/.config: ${BUSYBOX}.tar.bz2
 	cd ${BUSYBOX}; make oldconfig
 
 ${BUSYBOX}/busybox: ${BUSYBOX}/.config
-	cd ${BUSYBOX}; make O=
+	cd ${BUSYBOX}; make
 
 insdirs ${INSDIR}/sbin ${INSDIR}/etc:
 	mkdir -p ${INSDIR}/proc
@@ -25,7 +25,7 @@ insdirs ${INSDIR}/sbin ${INSDIR}/etc:
 
 busybox_install: insdirs ${BUSYBOX}/busybox
 	${TOP}/package/pinstall ${TOP}/package/pkg_busybox/pkg/ ${INSDIR}/
-	cd ${BUSYBOX}; make O= CONFIG_PREFIX=${INSDIR} install
+	cd ${BUSYBOX}; make CONFIG_PREFIX=${INSDIR} install
 	echo ${VERSION} > ${INSDIR}/etc/version
 	sudo rm -fr ${INSDIR}/dev/console
 	sudo mknod ${INSDIR}/dev/console c 5 1
