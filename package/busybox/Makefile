@@ -23,7 +23,7 @@ busybox_install: ${BUSYBOX}/busybox
 	mkdir -p ${INSDIR}/dev
 	mkdir -p ${INSDIR}/sys
 	mkdir -p ${INSDIR}/lib
-	${TOP}/package/pinstall ${TOP}/package/busybox/pkg/ ${INSDIR}/
+	${PWD}/package/pinstall ${PWD}/package/busybox/pkg/ ${INSDIR}/
 	cd ${BUSYBOX}; make CONFIG_PREFIX=${INSDIR} install
 	sudo rm -fr ${INSDIR}/dev/console
 	sudo mknod ${INSDIR}/dev/console c 5 1

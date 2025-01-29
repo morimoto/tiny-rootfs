@@ -2,8 +2,7 @@ VERSION	= 1.0.1
 BUSYVER	= 1.36.1
 BUSYBOX	= busybox-${BUSYVER}
 HOST	=
-TOP	= ${PWD}
-INSDIR	= ${TOP}/tiny-rootfs-${VERSION}
+INSDIR	= ${PWD}/tiny-rootfs-${VERSION}
 
 -include .config
 

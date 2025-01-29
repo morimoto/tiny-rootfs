@@ -1,2 +1,2 @@
 hostcp_install: ${INSDIR}
-	${TOP}/package/pinstall ${TOP}/package/hostcp/pkg/ ${INSDIR}/
+	${PWD}/package/pinstall ${PWD}/package/hostcp/pkg/ ${INSDIR}/
