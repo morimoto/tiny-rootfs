@@ -6,7 +6,7 @@ ${BUSYBOX}.tar.bz2:
 
 ${BUSYBOX}/.config: ${BUSYBOX}.tar.bz2
 	tar -jxf ${BUSYBOX}.tar.bz2
-	cp ./package/pkg_busybox/configs/config			$@
+	cp ./package/busybox/configs/config			$@
 ifneq ($(HOST),)
 	echo "CONFIG_CROSS_COMPILER_PREFIX=\"${HOST}-\""	>> $@
 endif
@@ -23,7 +23,7 @@ busybox_install: ${BUSYBOX}/busybox
 	mkdir -p ${INSDIR}/dev
 	mkdir -p ${INSDIR}/sys
 	mkdir -p ${INSDIR}/lib
-	${TOP}/package/pinstall ${TOP}/package/pkg_busybox/pkg/ ${INSDIR}/
+	${TOP}/package/pinstall ${TOP}/package/busybox/pkg/ ${INSDIR}/
 	cd ${BUSYBOX}; make CONFIG_PREFIX=${INSDIR} install
 	sudo rm -fr ${INSDIR}/dev/console
 	sudo mknod ${INSDIR}/dev/console c 5 1

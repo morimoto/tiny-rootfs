@@ -38,7 +38,7 @@
 
 **	hostcp
 
-	see package/pkg_hostcp/README for more detail
+	see package/hostcp/README for more detail
 
 		make hostcp_install
 

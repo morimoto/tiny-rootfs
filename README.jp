@@ -35,7 +35,7 @@
 
 **	hostcp
 
-	詳細については package/pkg_hostcp/README を参照
+	詳細については package/hostcp/README を参照
 
 		make hostcp_install
 
