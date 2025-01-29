@@ -4,7 +4,6 @@ BUSYBOX	= busybox-${BUSYVER}
 HOST	=
 TOP	= ${PWD}
 INSDIR	= ${TOP}/tiny-rootfs-${VERSION}
-PACKAGE = `ls -d ./package/pkg_*`
 
 -include .config
 
