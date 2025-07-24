@@ -29,6 +29,7 @@ busybox_install: ${BUSYBOX}/busybox
 	mkdir -p ${INSDIR}/lib
 	${PWD}/package/pinstall ${PWD}/package/busybox/pkg/ ${INSDIR}/
 	cd ${BUSYBOX}; make CONFIG_PREFIX=${INSDIR} install
+	echo ${VERSION} > ${INSDIR}/etc/version
 	sudo rm -fr ${INSDIR}/dev/console
 	sudo mknod ${INSDIR}/dev/console c 5 1
 	cd ${INSDIR}; ln -s linuxrc init
