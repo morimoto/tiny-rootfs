@@ -1,10 +1,12 @@
 #!/bin/sh
-machine=`cat /proc/cpuinfo | grep "^machine" | cut -d ":" -f 2-`
+[ -f /sys/firmware/devicetree/base/model ] && machine=`cat /sys/firmware/devicetree/base/model`
 ostype=`sysctl -n kernel.ostype`
 osrelease=`sysctl -n kernel.osrelease`
-linux="$ostype $osrelease"
 busybox=`busybox | head -n 1 | cut -d " " -f 1-2`
 version=`cat /etc/version`
 echo ------------------------------------
-echo $machine tiny $version "($linux, $busybox)"
+[ "x${machine}" != x ] && echo "[$machine]"
+echo $ostype $osrelease
+echo $busybox
+echo tiny-root $version
 echo ------------------------------------
